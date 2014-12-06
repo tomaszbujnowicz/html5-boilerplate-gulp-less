@@ -2,7 +2,7 @@
 
 Project based on amazing [HTML5 Boilerplate](https://github.com/h5bp/html5-boilerplate)
 
-HTML5 Boilerplate enhanced with [LESS](http://www.lesscss.org/) and [Gulp.js](http://gulpjs.com/) including BrowserSync plugin. 
+HTML5 Boilerplate enhanced with [LESS](http://www.lesscss.org/) and [Gulp.js](http://gulpjs.com/) including [BrowserSync](http://www.browsersync.io) plugin. 
 
 ## Quick start
 
@@ -82,6 +82,3 @@ Production ready version
 * Add more Gulp.js plugins like Image Optimization, SVG/PNG Sprites, Filesize, Minifying SVGs etc..
 * Concatenates CSS, JS files
 * Testing and keeping project up-to-date
-
-## License
-
