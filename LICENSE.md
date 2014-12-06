@@ -1,4 +1,4 @@
-Copyright (c) HTML5 Boilerplate
+Copyright (c) HTML5 Boilerplate, HTML5 Boilerplate Gulp LESS
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
