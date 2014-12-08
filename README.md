@@ -70,12 +70,13 @@ Production ready version
 
 * LESS with Autoprefixer instead of CSS
 * Minified version of CSS files and main.js goes to Dist
-* Added Watch and Develop gulp task
+* Added "watch and develop" gulp task
 * Commented GA Code as it's not going to work until the project is live
-* Removed Favicons - remember about uploading project specific favicons
+* Removed favicons - remember about uploading project specific favicons
 * Removed browserconfig.xml and tile icons
-* Removed Doc folder
-* Other minor adjustments
+* Removed /Doc folder
+* Other GULP related adjustments and improvements
+* Handle more HTML files when deploying and testing
 
 ## Todo
 
