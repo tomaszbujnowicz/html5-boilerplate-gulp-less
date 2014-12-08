@@ -14,13 +14,13 @@ Download all the project dependencies
 ```sh
 npm install
 ```
-Building out files for deployment
-```sh
-gulp
-```
 Watch and develop. Recompile JS and LESS on each change and refresh the browser using BrowserSync after an HTML file is compiled
 ```sh
 gulp dev
+```
+Building out files for deployment and clean up source folder
+```sh
+gulp
 ```
 ## Installation requirements
 

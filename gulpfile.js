@@ -69,7 +69,8 @@ gulp.task('copy', [
     'copy:.htaccess',
     'copy:index.html',
     'copy:jquery',
-    // 'copy:main.css', Commenting it out. We serve minified version of CSS file without comments anyway but it would be good to respect all the hard work that h5bp team did so maybe a good idea would be to put banner text in the minified version?
+    'copy:main.min.css',
+    'copy:main.min.js',
     'copy:misc',
     'copy:normalize'
 ]);
@@ -92,15 +93,21 @@ gulp.task('copy:jquery', function () {
                .pipe(gulp.dest(dirs.dist + '/js/vendor'));
 });
 
-gulp.task('copy:main.css', function () {
+gulp.task('copy:main.min.css', function () {
     var banner = '/*! HTML5 Boilerplate v' + pkg.version +
                     ' | ' + pkg.license.type + ' License' +
                     ' | ' + pkg.homepage + ' */\n\n';
 
-    return gulp.src(dirs.src + '/css/main.css')
+    return gulp.src(dirs.src + '/css/main.min.css')
                .pipe(plugins.header(banner))
                .pipe(gulp.dest(dirs.dist + '/css'));
 });
+
+gulp.task('copy:main.min.js', function () {
+    return gulp.src(dirs.src + '/js/main.min.js')
+               .pipe(gulp.dest(dirs.dist + '/js'));
+});
+
 
 gulp.task('copy:misc', function () {
     return gulp.src([
@@ -110,9 +117,10 @@ gulp.task('copy:misc', function () {
 
         // Exclude the following files
         // (other tasks will handle the copying of these files)
-        '!' + dirs.src + '/css/main.css',
         '!' + dirs.src + '/index.html',
-        '!' + dirs.src + '/js/main.js'
+        '!' + dirs.src + '/js/main.js',
+        '!' + dirs.src + '/js/main.min.js',
+        '!' + dirs.src + '/js/main.min.css'
 
     ], {
 
@@ -121,6 +129,25 @@ gulp.task('copy:misc', function () {
 
     }).pipe(gulp.dest(dirs.dist));
 });
+
+gulp.task('copy:html', function() {
+    return gulp.src([
+       // Copy html files
+       dirs.src + '/**/*.html'
+   ], {
+   })
+   .pipe(plugins.replace(/{{JQUERY_VERSION}}/g, pkg.devDependencies.jquery))
+   .pipe(gulp.dest(dirs.dist));
+});
+
+gulp.task('run:html', function(done) {
+    runSequence(
+        'copy:html',
+        'bs-reload',
+    done);
+});
+
+
 
 gulp.task('copy:normalize', function () {
     return gulp.src('node_modules/normalize.css/normalize.css')
@@ -148,7 +175,15 @@ gulp.task('scripts', function() {
         .pipe(plugins.rename({ suffix: '.min' }))
         .pipe(plugins.uglify())
         .pipe(gulp.dest(dirs.src + '/js'))
+        .pipe(reload({ stream:true }))
         .pipe(plugins.notify({ message: 'Scripts task completed' }));
+});
+
+gulp.task('compile:scripts', function(done) {
+    runSequence(
+        'scripts',
+        'copy:main.min.js',
+    done);
 });
 
 // Styles
@@ -164,11 +199,18 @@ gulp.task('styles', function() {
         .pipe(plugins.notify({ message: 'Styles task completed' }));
 });
 
+gulp.task('compile:styles', function(done) {
+    runSequence(
+        'styles',
+        'copy:main.min.css',
+    done);
+});
+
 // BrowserSync task for starting the server.
 gulp.task('browser-sync', function() {
-    browserSync.init(['./dist/styles/*.css', './dist/scripts/*.js', './dist/*.html'], {
+    browserSync.init({
         server: {
-            baseDir: './dist'
+            baseDir: './' + dirs.dist
         }
     });
 });
@@ -179,13 +221,11 @@ gulp.task('bs-reload', function () {
 });
 
 // Remove main.css + min and main.min.js from the src folder
-gulp.task('clean-src', function (done) {
+gulp.task('clean:src', function (done) {
     require('del')([
         dirs.src + '/css',
         dirs.src + '/js/main.min.js'
     ], done);
-    // del(['tmp/*.js', '!tmp/unicorn.js'], function (err, deletedFiles) {
-    // });
 });
 
 // ---------------------------------------------------------------------
@@ -195,13 +235,13 @@ gulp.task('clean-src', function (done) {
 // Watch
 gulp.task('watch', function () {
     // Watch .less files
-    gulp.watch(dirs.src + '/less/**/*.less', ['styles']);
+    gulp.watch(dirs.src + '/less/**/*.less', ['compile:styles']);
 
     // Watch .js files
-    gulp.watch(dirs.src + '/js/**/*.js', ['scripts']);
+    gulp.watch(dirs.src + '/js/**/*.js', ['compile:scripts']);
 
     // Watch .html files
-    gulp.watch(dirs.src + '/*.html', ['copy:index.html', 'bs-reload']);
+    gulp.watch(dirs.src + '/*.html', ['run:html']);
 });
 
 // Archive
@@ -217,7 +257,7 @@ gulp.task('archive', function (done) {
 gulp.task('build', function (done) {
     runSequence(
         ['clean', 'lint:js', 'styles', 'scripts'],
-        'copy', 'clean-src',
+        'copy', 'clean:src',
     done);
 });
 
@@ -225,7 +265,7 @@ gulp.task('build', function (done) {
 gulp.task('dev', function (done) {
     runSequence(
         ['clean', 'lint:js', 'styles', 'scripts', 'browser-sync', 'watch'],
-        'copy', 'clean-src',
+        'copy',
     done);
 });
 

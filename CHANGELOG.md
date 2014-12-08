@@ -1,5 +1,12 @@
 ### HEAD
 
+### 1.0.1 (December 8, 2014)
+* Fix building out files for deployment
+* Fix gulp dev
+* Handle more HTML files and not only index.html when deploying files
+* Reconfigure BrowserSync
+* Other small tweaks
+
 ### 1.0.0 (December 5, 2014)
 
 * Let's the party started
