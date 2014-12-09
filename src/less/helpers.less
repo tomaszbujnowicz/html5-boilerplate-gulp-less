@@ -64,13 +64,12 @@
  *    `:before` to contain the top-margins of child elements.
  */
 
-.clearfix {
-    &:before,
-    &:after {
-        content: " "; /* 1 */
-        display: table; /* 2 */
-    }
-    &:after {
-        clear: both;
-    }
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
 }
