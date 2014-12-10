@@ -130,6 +130,16 @@ gulp.task('copy:misc', function () {
     }).pipe(gulp.dest(dirs.dist));
 });
 
+gulp.task('copy:images', function () {
+    return gulp.src([
+        // Copy all image files
+        dirs.src + '/img/**/*'
+    ], {
+        // Include hidden files by default
+        dot: true
+    }).pipe(gulp.dest(dirs.dist + '/img'));
+});
+
 gulp.task('copy:html', function() {
     return gulp.src([
        // Copy html files
@@ -146,8 +156,6 @@ gulp.task('run:html', function(done) {
         'bs-reload',
     done);
 });
-
-
 
 gulp.task('copy:normalize', function () {
     return gulp.src('node_modules/normalize.css/normalize.css')
@@ -242,6 +250,9 @@ gulp.task('watch', function () {
 
     // Watch .html files
     gulp.watch(dirs.src + '/*.html', ['run:html']);
+
+    // Watch image files
+    gulp.watch(dirs.src + '/img/**/*', ['copy:images']);
 });
 
 // Archive
