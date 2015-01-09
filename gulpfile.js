@@ -275,8 +275,8 @@ gulp.task('build', function (done) {
 // Dev
 gulp.task('dev', function (done) {
     runSequence(
-        ['clean', 'lint:js', 'styles', 'scripts', 'browser-sync', 'watch'],
-        'copy',
+        ['watch'],
+        'browser-sync',
     done);
 });
 
