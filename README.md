@@ -14,7 +14,7 @@ Download all the project dependencies
 ```sh
 npm install
 ```
-Watch and develop. Recompile JS and LESS on each change and refresh the browser using BrowserSync after an HTML file is compiled
+For debug purposes. Watch and develop. Recompile JS and LESS on each change and refresh the browser using BrowserSync after an HTML file is compiled. Please note that you should run `gulp` for the first time 
 ```sh
 gulp dev
 ```
@@ -83,3 +83,8 @@ Production ready version
 * Add more Gulp.js plugins like Image Optimization, SVG/PNG Sprites, Filesize, Minifying SVGs etc..
 * Concatenates CSS, JS files
 * Testing and keeping project up-to-date
+
+
+###Copyright and license
+
+Copyright 2014-2015 Tomasz Bujnowicz under the [MIT license](http://opensource.org/licenses/MIT).
