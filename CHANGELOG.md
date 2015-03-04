@@ -1,5 +1,11 @@
 ### HEAD
 
+### 1.0.2 (March 4, 2015)
+* Update devDependencies
+* Update .travis.yml - HTML5 Boilerplate Commits
+* Exclude .htaccess from GitHub's language stat - HTML5 Boilerplate Commits
+* Update Apache Server Configs to v2.13.0 - HTML5 Boilerplate Commits
+
 ### 1.0.1 (December 8, 2014)
 * Fix building out files for deployment
 * Fix gulp dev
