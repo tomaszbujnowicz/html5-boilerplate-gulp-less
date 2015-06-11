@@ -1,5 +1,14 @@
 ### HEAD
 
+### 1.0.3 (June 11, 2015)
+* Update devDependencies
+* Update jQuery to v1.11.3
+* Update and sync with latest changes of HTML5 Boilerplate
+* Fix errors pointed out by JSCS from gulpfile.js
+* Update the high resolution media query
+* Deprecate protocol-relative URLs
+* Simplify analytics snippet using async & defer
+
 ### 1.0.2 (March 4, 2015)
 * Update devDependencies
 * Update .travis.yml - HTML5 Boilerplate Commits

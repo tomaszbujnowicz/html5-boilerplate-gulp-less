@@ -2,12 +2,9 @@ var fs = require('fs');
 var path = require('path');
 
 var gulp = require('gulp');
-var plugins = require('gulp-load-plugins')(); // Load all gulp plugins
-                                              // automatically and attach
-                                              // them to the `plugins` object
+var plugins = require('gulp-load-plugins')(); // Load all gulp plugins automatically and attach them to the `plugins` object
 
-var runSequence = require('run-sequence');    // Temporary solution until gulp 4
-                                              // https://github.com/gulpjs/gulp/issues/355
+var runSequence = require('run-sequence');    // Temporary solution until gulp 4 https://github.com/gulpjs/gulp/issues/355
 
 var browserSync = require('browser-sync');
 var reload      = browserSync.reload;
