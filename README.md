@@ -8,7 +8,7 @@ HTML5 Boilerplate enhanced with [LESS](http://www.lesscss.org/) and [Gulp.js](ht
 
 Clone the git repo
 ```sh
-git clone https://github.com/tomaszbujnowicz/h5bp-less-gulp.git
+git clone https://github.com/tomaszbujnowicz/html5-boilerplate-gulp-less.git
 ```
 Download all the project dependencies
 ```sh
