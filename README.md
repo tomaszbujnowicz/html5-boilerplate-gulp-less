@@ -1,3 +1,5 @@
+# Outdated. Please go to more up to date boilerplate https://github.com/tomaszbujnowicz/Frontend-Development-Starter-Kit
+
 # HTML5 Boilerplate enhanced with LESS and Gulp.js including BrowserSync plugin.
 
 Project based on amazing [HTML5 Boilerplate](https://github.com/h5bp/html5-boilerplate)
