@@ -1,4 +1,4 @@
-# Outdated. Please go to more up to date boilerplate https://github.com/tomaszbujnowicz/frontie
+# Outdated. Please go to more up to date boilerplate https://github.com/tomaszbujnowicz/frontie-webpack or https://github.com/tomaszbujnowicz/frontie
 
 # HTML5 Boilerplate enhanced with LESS and Gulp.js including BrowserSync plugin.
 
